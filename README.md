@@ -130,7 +130,7 @@ This is a college-based app where college students are able to eliminate the soc
     * Profile Fragment
 
 ## Wireframes
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/improgo-josh/UniversityCrew/blob/master/UCrewPrototypeGIF.gif" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
