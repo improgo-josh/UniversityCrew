@@ -76,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    // Test Post
 
     /*private boolean verify(String email, String password) {
         // TODO: 2
