@@ -8,8 +8,10 @@
     <string name="ex_password">Password</string>
     <string name="appLogo">appLogo</string>
 
-    <string name="fontFamily">sans-serif-light</string>
+    <string name="fontFamily">roboto_light</string>
     <string name="hint_universityEmailAddress">University Email Address</string>
     <string name="hint_password">Password</string>
     <string name="lbl_signIn">Sign In</string>
+    <string name="tv_forgotPassword">Forgot Password?</string>
+    <string name="noAccount">Don\'t have an account?</string>
 </resources>
