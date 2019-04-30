@@ -1,0 +1,57 @@
+diff a/README.md b/README.md	(rejected hunks)
+@@ -137,10 +137,52 @@
+ ### [BONUS] Interactive Prototype
+ 
+ ## Schema 
+-[This section will be completed in Unit 9]
+ ### Models
+-[Add table of models]
++   | Property       | Type      | Description |
++   | -------------  | --------  | ------------|
++   | email          | String    | the user's university email address |
++   | firstName      | String    | the user's first name |
++   | lastName       | String    | the user's last name |
++   | code           | String    | the user's verification code to login |
++   | subject        | String    | the name of the subject/course to create/join |
++   | professor      | String    | the professor's name of a subject/course |
++   | building       | String    | the name of the building location |
++   | room           | String    | the number and letter of the subject/course's location |
++   | courseNumber   | int | the number of the subject/course (ex: PSYCH "101") |
++   | amntUsers      | int | the number of users in a particular course |
++   | hour_start     | int | the hour that the course begins |
++   | hour_end       | int | the hour that the course ends |
++   | min_start      | int | the minute that the course starts |
++   | min_end        | int | the minute that the course ends |
++   | picture        | File | the image in Events |
++   | eventName      | String | the name of the event |
++   | details        | String | the details of the event |
++   | recentMsg      | String | the most recent message in a chat |
++   | recentUser     | String | the most recent user in a chat |
++   | timeMsg        | DateTime | the time that the message was posted |
++   | file           | File | the file that a user may post |
++
+ ### Networking
+-- Request College E-mail authentication
++    - Login Screen
++        - (Read/GET) Retrieve email and password to ensure an account is created with a university email.
++    - Register Screen
++        - (Create/PUT) Create an name, password, and email.
++    - Verification Screen
++        - (Get) Send a code to a university email for verification.
++    - Courses
++        - (Create/COURSE) Create a new course and post it
++        - (Read/GET) Retrieve a currently created course
++        - (Delete) Leave a course that the user is enrolled in
++        - (Read/GET) Query All messages from a classroom/course.
++        - (Read/GET) Query courses from 
++    - Profile
++        - (Read/GET) Query logged in user
++    - Events
++        - (Create/EVENT) Create a new event and post it
++    - Messages
++        - (Read/GET) Retrieve messages from a certain user.
++        - (Create/PUT) Send messages to a certain user.
++        - (Create) Create a Coversation with a certain user.
++        - (Delete) Delete/Block a Coversation with a certain user.
+ - [Create basic snippets for each Parse network request]
+ - [OPTIONAL: List endpoints if using existing API such as Yelp]
