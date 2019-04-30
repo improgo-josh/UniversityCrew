@@ -9,6 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.parse.LogInCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
 
 
 /**
@@ -52,6 +57,9 @@ public class LoginActivity extends AppCompatActivity {
                 Log.i(TAG, "bt_signIn Clicked");
 
                 // TODO: 1, 2, 3
+                String uniMail = et_uniMail.getText().toString();
+                String password = et_password.getText().toString();
+                login(uniMail, password);
             }
         });
 
@@ -77,10 +85,27 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    /*private boolean verify(String email, String password) {
+    private void login(String email, String password) {
         // TODO: 2
         // TODO: Send a request to get the information from database
+        ParseUser.logInInBackground(email, password, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with login");
+                    e.printStackTrace();
+                    return;
+                }
+                Toast.makeText(getApplicationContext(), "Successfully logged in!", Toast.LENGTH_SHORT).show();
+                goToMainActivity();
+            }
+        });
+//        return if (email == ... && password == ...);
+    }
 
-        return if (email == ... && password == ...);
-    }*/
+    private void goToMainActivity() {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        finish();
+    }
 }
