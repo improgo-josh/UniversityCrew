@@ -59,11 +59,16 @@ This is a college-based app where college students are able to eliminate the soc
 
 ### 2. Screen Archetypes
 
-* Login Screen
+* - [ ] Login Screen
+    - [x] Frontend
+    - [ ] Backend
     * User can log in
         * University email
         * Password
-* Register Screen
+        
+* - [ ] Register Screen
+    - [ ] Frontend
+    - [ ] Backend
     * User can register for an account for their associated college
         * First name
         * Last name
@@ -72,7 +77,10 @@ This is a college-based app where college students are able to eliminate the soc
         * Implement Verification
         * Password
         * Confirm Password
-* Courses/Classes Fragment
+        
+* - [ ] Courses/Classes Fragment
+    - [ ] Frontend
+    - [ ] Backend
     * User is able to see their enrolled classes
         * Add Classes (Several options for searching)
             * Professor Name
@@ -86,18 +94,28 @@ This is a college-based app where college students are able to eliminate the soc
             * Edit Menu - Select classes to delete
         * Semester organization
 
-* Profile Fragment
+* - [ ] Profile Fragment
+    - [ ] Frontend
+    - [ ] Backend
     * User is able to view and edit their profile
         * Profile picture
         * Name
         * Major
         * Edit Profile
-* Events/Activities Fragment
+* - [ ] Events/Activities Fragment
+    - [ ] Frontend
+    - [ ] Backend
     * User is able to view the upcoming events and activities
-* Messages Fragment
+    
+* - [ ] Messages Fragment
+    - [ ] Frontend
+    - [ ] Backend
     * User is able to message students within their class
         * Direct messages
-* Settings Screen
+        
+* - [ ] Settings Screen
+    - [ ] Frontend
+    - [ ] Backend
     * User is able to edit the settings of the app
         * Receive Notifications?
         * By Phone
