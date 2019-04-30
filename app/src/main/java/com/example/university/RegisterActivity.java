@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+// TODO: View all registered Users
+// TODO: Push data into database
+
 public class RegisterActivity extends AppCompatActivity {
 
     static final String TAG = "LoginActivity";
