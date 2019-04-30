@@ -1,5 +1,6 @@
 package com.example.university;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,10 +25,12 @@ import com.parse.ParseUser;
  * TODO: 5. NoAccount --> Send to Register Screen
  */
 
+
 public class LoginActivity extends AppCompatActivity {
 
     static final String TAG = "LoginActivity";
 
+    ProgressDialog progressDialog;
     // Initialize Variables
     ImageView iv_appLogo;
     EditText et_password;
@@ -41,6 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
 
         // Set Views
         iv_appLogo = findViewById(R.id.iv_appLogo);
@@ -60,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                 String uniMail = et_uniMail.getText().toString();
                 String password = et_password.getText().toString();
                 login(uniMail, password);
+
             }
         });
 
@@ -79,8 +85,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 // TODO: 5
 
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
+                goToRegisterActivity();
             }
         });
     }
@@ -88,23 +93,36 @@ public class LoginActivity extends AppCompatActivity {
     private void login(String email, String password) {
         // TODO: 2
         // TODO: Send a request to get the information from database
+        Log.e(TAG, "1 " + email + " " + password);
+
+        progressDialog.show();
+
         ParseUser.logInInBackground(email, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
+
+//                Log.e(TAG, "1" + e.getMessage());
                 if (e != null) {
-                    Log.e(TAG, "Issue with login");
+//                    Log.e(TAG, "Issue with login " + e.getMessage());
                     e.printStackTrace();
+                    progressDialog.dismiss();
                     return;
                 }
                 Toast.makeText(getApplicationContext(), "Successfully logged in!", Toast.LENGTH_SHORT).show();
                 goToMainActivity();
+                progressDialog.dismiss();
             }
         });
-//        return if (email == ... && password == ...);
     }
 
     private void goToMainActivity() {
         Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    private void goToRegisterActivity() {
+        Intent i = new Intent(this, RegisterActivity.class);
         startActivity(i);
         finish();
     }
