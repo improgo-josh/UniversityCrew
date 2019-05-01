@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 // TODO: 5
 
-                goToRegisterActivity();
+                goToActivity(RegisterActivity.class);
             }
         });
     }
@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 Toast.makeText(getApplicationContext(), "Successfully logged in!", Toast.LENGTH_SHORT).show();
-                goToMainActivity();
+                goToActivity(MainActivity.class);
                 progressDialog.dismiss();
             }
         });
@@ -123,6 +123,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private void goToRegisterActivity() {
         Intent i = new Intent(this, RegisterActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    private void goToActivity(Class c) {
+        Intent i = new Intent(this, c);
         startActivity(i);
         finish();
     }
