@@ -1,12 +1,15 @@
 package com.example.university;
 
 import android.content.Intent;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -21,15 +24,16 @@ import java.util.regex.Pattern;
 // TODO: View all registered Users
 // TODO: Push data into database
 
-
+// TODO: On TextInputEditText change, set error to be empty
 public class RegisterActivity extends AppCompatActivity {
 
     static final String TAG = "RegisterActivity";
     static final String EMAIL_KEY = "email";
+    static final String USER_KEY = "user";
     static final String FIRST_NAME_KEY = "firstName";
     static final String LAST_NAME_KEY = "lastName";
 
-    // TODO: Change EditTexts show Error Messages under bar, possibly wrap EditTexts in MaterialEditText
+    // TODO: Change TextInputEditTexts show Error Messages under bar, possibly wrap TextInputEditTexts in MaterialTextInputEditText
     // TODO: Email Address Pattern - Change it to be EDU only and then remove "isUniversity" method
     static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
             "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
@@ -45,33 +49,45 @@ public class RegisterActivity extends AppCompatActivity {
 
     boolean isUnregistered;
 
-    EditText et_email, et_confirmEmail, et_password, et_confirmPassword, et_firstName, et_lastName;
-    EditText[] editText;
+    TextInputLayout til_email, til_confirmEmail, til_password, til_confirmPassword, til_firstName, til_lastName;
+    TextInputLayout[] textInputLayout;
+
+    TextInputEditText tiet_email, tiet_confirmEmail, tiet_password, tiet_confirmPassword, tiet_firstName, tiet_lastName;
+    TextInputEditText[] textInputEditText;
+
     Button btn_createAccount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        et_firstName = findViewById(R.id.et_firstName);
-        et_lastName = findViewById(R.id.et_lastName);
-        et_email = findViewById(R.id.et_email);
-        et_confirmEmail = findViewById(R.id.et_confirmEmail);
-        et_confirmPassword = findViewById(R.id.et_confirmPassword);
-        et_password = findViewById(R.id.et_password);
+        til_firstName = findViewById(R.id.til_firstName);
+        til_lastName = findViewById(R.id.til_lastName);
+        til_email = findViewById(R.id.til_email);
+        til_confirmEmail = findViewById(R.id.til_confirmEmail);
+        til_password = findViewById(R.id.til_password);
+        til_confirmPassword = findViewById(R.id.til_confirmPassword);
+
+        tiet_firstName = findViewById(R.id.tiet_firstName);
+        tiet_lastName = findViewById(R.id.tiet_lastName);
+        tiet_email = findViewById(R.id.tiet_email);
+        tiet_confirmEmail = findViewById(R.id.tiet_confirmEmail);
+        tiet_confirmPassword = findViewById(R.id.tiet_confirmPassword);
+        tiet_password = findViewById(R.id.tiet_password);
         btn_createAccount = findViewById(R.id.btn_createAccount);
 
-        editText = new EditText[]{et_firstName, et_lastName, et_email, et_confirmEmail, et_password, et_confirmPassword};
+        textInputLayout = new TextInputLayout[]{til_email, til_confirmEmail, til_password, til_confirmPassword, til_firstName, til_lastName};
+        textInputEditText = new TextInputEditText[]{tiet_email, tiet_confirmEmail, tiet_password, tiet_confirmPassword, tiet_firstName, tiet_lastName};
 
         btn_createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String firstName = et_firstName.getText().toString();
-                String lastName = et_lastName.getText().toString();
-                String email = et_email.getText().toString();
-                String confirmEmail = et_confirmEmail.getText().toString();
-                String password = et_password.getText().toString();
-                String confirmPassword = et_confirmPassword.getText().toString();
+                String firstName = tiet_firstName.getText().toString();
+                String lastName = tiet_lastName.getText().toString();
+                String email = tiet_email.getText().toString();
+                String confirmEmail = tiet_confirmEmail.getText().toString();
+                String password = tiet_password.getText().toString();
+                String confirmPassword = tiet_confirmPassword.getText().toString();
 
                 /*if (!hasEmptyFields(firstName, lastName, email, confirmEmail, password, confirmPassword))
                     if (isConfirmed(email, confirmEmail, password, confirmPassword)) {
@@ -84,45 +100,160 @@ public class RegisterActivity extends AppCompatActivity {
 
                         }
                     }*/
-                if (hasEmptyFields()) {
-                    et_firstName.setError("Cannot leave field empty");
-                    if (!isConfirmed(email, confirmEmail, password, confirmPassword)) {
+                if (!hasEmptyFields()) {
+                    if (isConfirmed(email, confirmEmail, password, confirmPassword)) {
                         Log.d(TAG, "Confirmed");
                         if (isUniversityEmail(email)) {
                             Log.d(TAG, "isUniversityEmail");
-                            if (isUnregistered(email))
-
-                                pullVerificationFragment();
-
+                            pullVerificationFragment();
                         }
                     }
                 }
             }
         });
 
+        // TODO: Check all fields are valid
+        // TODO: Have them individually checked
+        // TODO: Put all addTextChangedListeners into a method that is called when btn is clicked __ DON'T DO
+        tiet_email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!tiet_email.getText().toString().isEmpty())
+                    til_email.setError("");
+            }
+        });
+
+        tiet_confirmEmail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!tiet_confirmEmail.getText().toString().isEmpty())
+                    til_confirmEmail.setError("");
+            }
+        });
+
+        tiet_password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!tiet_password.getText().toString().isEmpty())
+                    til_password.setError("");
+            }
+        });
+
+        tiet_confirmPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!tiet_confirmPassword.getText().toString().isEmpty())
+                    til_confirmPassword.setError("");
+
+                // TODO: Check password to make sure it matches
+                if (!tiet_password.getText().equals(tiet_confirmPassword.getText()))
+                    til_confirmPassword.setError("Password is empty");
+            }
+        });
+
+        tiet_firstName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!tiet_firstName.getText().toString().isEmpty())
+                    til_firstName.setError("");
+            }
+        });
+
+        tiet_lastName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!tiet_lastName.getText().toString().isEmpty())
+                    til_lastName.setError("");
+            }
+        });
+
+
     }
 
     private boolean isConfirmed(String email, String confirmEmail, String password, String confirmPassword) {
         boolean isConfirmed = true;
         boolean unconfirmedPassword = !password.equals(confirmPassword), unconfirmedEmail = !email.equalsIgnoreCase(confirmEmail);
-        String unmatchedEmailAndPass = "Emails and Passwords do not match";
         String unmatchedPass = "Passwords do not match";
         String unmatchedEmail = "Emails do not match";
+        String passMessage = "";
+        String emailMessage = "";
 
-        if (unconfirmedEmail && unconfirmedPassword) {
-            Log.d(TAG, unmatchedEmailAndPass);
-            Toast.makeText(getApplicationContext(), unmatchedEmailAndPass, Toast.LENGTH_SHORT).show();
-            isConfirmed = false;
-        } else if (unconfirmedEmail) {
+        if (unconfirmedEmail) {
             Log.d(TAG, unmatchedEmail);
-            Toast.makeText(getApplicationContext(), unmatchedEmail, Toast.LENGTH_SHORT).show();
-            isConfirmed = false;
-        } else if (unconfirmedPassword){
-            Log.d(TAG, unmatchedPass);
-            Toast.makeText(getApplicationContext(), unmatchedPass, Toast.LENGTH_SHORT).show();
+            emailMessage = unmatchedEmail;
             isConfirmed = false;
         }
 
+        if (unconfirmedPassword) {
+            Log.d(TAG, unmatchedPass);
+            passMessage = unmatchedPass;
+            isConfirmed = false;
+        }
+
+        til_email.setError(emailMessage);
+        til_confirmEmail.setError(emailMessage);
+        til_password.setError(passMessage);
+        til_confirmPassword.setError(passMessage);
 
         return isConfirmed;
     }
@@ -130,14 +261,16 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean hasEmptyFields(/*String firstName, String lastName, String email, String confirmEmail, String password, String confirmPassword*/) {
         final int SIZE = 6;
-        EditText[] emptyFields = new EditText[SIZE];
+//        TextInputEditText[] emptyFields = new TextInputEditText[SIZE];
 
         boolean hasEmptyFields = false;
 
         for (int i = 0; i < SIZE; i++) {
-            if (editText[i].getText().toString().isEmpty()) {
-                editText[i].setError("Cannot leave field Empty");
+            if (textInputEditText[i].getText().toString().isEmpty()) {
+                textInputLayout[i].setError("Cannot leave field Empty");
                 hasEmptyFields = true;
+            } else {
+                textInputLayout[i].setError("");
             }
         }
         /*
@@ -166,14 +299,15 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void pullVerificationFragment() {
+        Log.d(TAG, "VERIFIED");
         sendEmailToUser();
 
 
         if (isVerified()) {
-            String firstName = et_firstName.getText().toString();
-            String lastName = et_lastName.getText().toString();
-            String email = et_email.getText().toString();
-            String password = et_password.getText().toString();
+            String firstName = tiet_firstName.getText().toString();
+            String lastName = tiet_lastName.getText().toString();
+            String email = tiet_email.getText().toString();
+            String password = tiet_password.getText().toString();
 
             createNewAccount(firstName, lastName, email, password);
         }
@@ -188,29 +322,42 @@ public class RegisterActivity extends AppCompatActivity {
         // TODO: Send an Email to User with Code to confirm user is not a robot and email is active
     }
 
-    private boolean isUnregistered(String email) {
+    /*
+    private boolean isUnregistered(final String email) {
         isUnregistered = false;
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
-        query.whereNotEqualTo(EMAIL_KEY, email);
-
+        // Should use whereEqualTo
+        query.whereNotEqualTo(USER_KEY, email);
+        Log.d(TAG, "EMAIL TO TEST: " + email);
         query.findInBackground(new FindCallback<ParseUser>() {
             @Override
             public void done(List<ParseUser> objects, ParseException e) {
+                Log.d(TAG, "WHERE NOT EQUAL TO");
+                int size = objects.size();
                 if (e == null) {
-                    isUnregistered = true;
+                    Log.d(TAG, "SIZE: " + size);
+                    if (size == 0)
+                        // Check that size is 0 (means that the email is not registered in the database)
+                        isUnregistered = true;
+                    else {
+                        isUnregistered = true;
+                        for (int i = 0; i < objects.size(); i++) {
+                            String getUsername = objects.get(i).getUsername();
+                            if (getUsername.equalsIgnoreCase(email)) {
+                                isUnregistered = false;
+                                til_email.setError("Email is already registered");
+                                break;
+                            }
+                        }
+                    }
                 } else {
-
-                    Log.d(TAG, e.getMessage());
+                    Log.d(TAG, "ERROR: " + e.getMessage());
                 }
             }
         });
-
-        //        for (int i = )
-
-
         return isUnregistered;
-    }
+    }*/
 
     private void createNewAccount(String firstName, String lastName, String email, String password) {
         ParseUser user = new ParseUser();
@@ -227,7 +374,8 @@ public class RegisterActivity extends AppCompatActivity {
                 if (e == null) {
                     goToActivity(LoginActivity.class);
                 } else {
-                    Log.d(TAG, e.getMessage());
+                    til_email.setError(e.getMessage());
+                    Log.d(TAG, "ERROR: " + e.getMessage());
                 }
             }
         });
