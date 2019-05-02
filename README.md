@@ -59,11 +59,16 @@ This is a college-based app where college students are able to eliminate the soc
 
 ### 2. Screen Archetypes
 
-* Login Screen
+* - [ ] Login Screen
+    - [x] Frontend
+    - [ ] Backend
     * User can log in
         * University email
         * Password
-* Register Screen
+        
+* - [ ] Register Screen
+    - [ ] Frontend
+    - [ ] Backend
     * User can register for an account for their associated college
         * First name
         * Last name
@@ -72,7 +77,10 @@ This is a college-based app where college students are able to eliminate the soc
         * Implement Verification
         * Password
         * Confirm Password
-* Courses/Classes Fragment
+        
+* - [ ] Courses/Classes Fragment
+    - [ ] Frontend
+    - [ ] Backend
     * User is able to see their enrolled classes
         * Add Classes (Several options for searching)
             * Professor Name
@@ -86,18 +94,28 @@ This is a college-based app where college students are able to eliminate the soc
             * Edit Menu - Select classes to delete
         * Semester organization
 
-* Profile Fragment
+* - [ ] Profile Fragment
+    - [ ] Frontend
+    - [ ] Backend
     * User is able to view and edit their profile
         * Profile picture
         * Name
         * Major
         * Edit Profile
-* Events/Activities Fragment
+* - [ ] Events/Activities Fragment
+    - [ ] Frontend
+    - [ ] Backend
     * User is able to view the upcoming events and activities
-* Messages Fragment
+    
+* - [ ] Messages Fragment
+    - [ ] Frontend
+    - [ ] Backend
     * User is able to message students within their class
         * Direct messages
-* Settings Screen
+        
+* - [ ] Settings Screen
+    - [ ] Frontend
+    - [ ] Backend
     * User is able to edit the settings of the app
         * Receive Notifications?
         * By Phone
@@ -137,10 +155,52 @@ This is a college-based app where college students are able to eliminate the soc
 ### [BONUS] Interactive Prototype
 
 ## Schema 
-[This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+   | Property       | Type      | Description |
+   | -------------  | --------  | ------------|
+   | email          | String    | the user's university email address |
+   | firstName      | String    | the user's first name |
+   | lastName       | String    | the user's last name |
+   | code           | String    | the user's verification code to login |
+   | subject        | String    | the name of the subject/course to create/join |
+   | professor      | String    | the professor's name of a subject/course |
+   | building       | String    | the name of the building location |
+   | room           | String    | the number and letter of the subject/course's location |
+   | courseNumber   | int | the number of the subject/course (ex: PSYCH "101") |
+   | amntUsers      | int | the number of users in a particular course |
+   | hour_start     | int | the hour that the course begins |
+   | hour_end       | int | the hour that the course ends |
+   | min_start      | int | the minute that the course starts |
+   | min_end        | int | the minute that the course ends |
+   | picture        | File | the image in Events |
+   | eventName      | String | the name of the event |
+   | details        | String | the details of the event |
+   | recentMsg      | String | the most recent message in a chat |
+   | recentUser     | String | the most recent user in a chat |
+   | timeMsg        | DateTime | the time that the message was posted |
+   | file           | File | the file that a user may post |
+
 ### Networking
-- Request College E-mail authentication
+    - Login Screen
+        - (Read/GET) Retrieve email and password to ensure an account is created with a university email.
+    - Register Screen
+        - (Create/PUT) Create an name, password, and email.
+    - Verification Screen
+        - (Get) Send a code to a university email for verification.
+    - Courses
+        - (Create/COURSE) Create a new course and post it
+        - (Read/GET) Retrieve a currently created course
+        - (Delete) Leave a course that the user is enrolled in
+        - (Read/GET) Query All messages from a classroom/course.
+        - (Read/GET) Query courses from 
+    - Profile
+        - (Read/GET) Query logged in user
+    - Events
+        - (Create/EVENT) Create a new event and post it
+    - Messages
+        - (Read/GET) Retrieve messages from a certain user.
+        - (Create/PUT) Send messages to a certain user.
+        - (Create) Create a Coversation with a certain user.
+        - (Delete) Delete/Block a Coversation with a certain user.
 - [Create basic snippets for each Parse network request]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
