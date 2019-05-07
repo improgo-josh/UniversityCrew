@@ -60,7 +60,7 @@ This is a college-based app where college students are able to eliminate the soc
 ### 2. Screen Archetypes
 
 Login Screen and Register Screen with Error Messages and Progress Dialogue
-<img src="" width=600>
+<img src="https://github.com/improgo-josh/UniversityCrew/blob/master/UNI_CREW_LOGIN_AND_REGISTRATION_GIF.gif" width=600>
 
 * - [x] Login Screen
     - [x] Frontend
