@@ -59,16 +59,19 @@ This is a college-based app where college students are able to eliminate the soc
 
 ### 2. Screen Archetypes
 
-* - [ ] Login Screen
+Login Screen and Register Screen with Error Messages and Progress Dialogue
+<img src="" width=600>
+
+* - [x] Login Screen
     - [x] Frontend
-    - [ ] Backend
+    - [x] Backend
     * User can log in
         * University email
         * Password
         
-* - [ ] Register Screen
-    - [ ] Frontend
-    - [ ] Backend
+* - [x] Register Screen
+    - [x] Frontend
+    - [x] Backend
     * User can register for an account for their associated college
         * First name
         * Last name
