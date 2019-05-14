@@ -1,375 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple5"
-    tools:context=".CoursesActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CoursesActivity"
+    android:id="@+id/drawer_view">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/ti"
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:errorEnabled="true"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:hintEnabled="false">
+        android:layout_height="match_parent"
+        android:background="@color/purple5"
+        tools:context=".CoursesActivity">
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/edit_text"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_courses"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_height="?attr/actionBarSize"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter your name"
+            android:background="@color/purple6"
+            android:elevation="5dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="University"
+                android:textColor="@color/purple9"
+                android:textAlignment="center"
+                android:gravity="center_vertical"
+                android:textSize="24dp"
+                android:fontFamily="@font/roboto_medium"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+        </android.support.v7.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/tv_courses"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_constraintTop_toBottomOf="@id/tb_courses"
+            android:layout_marginTop="2dp"
+            android:text="Courses"
+            android:textColor="@color/white"
+            android:background="@color/purple8"
+            android:paddingLeft="20dp"
+            android:gravity="center_vertical"
+            android:textSize="20dp"
+            android:fontFamily="@font/roboto_medium"
             />
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintTop_toTopOf="@id/tv_courses"
+            app:layout_constraintRight_toRightOf="@id/tv_courses"
+            />
+    </android.support.constraint.ConstraintLayout>
 
-    </android.support.design.widget.TextInputLayout>
 
-</android.support.constraint.ConstraintLayout>
 
 
-<!--
+    <android.support.design.widget.NavigationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:menu="@menu/drawer_view"
+        android:layout_gravity="left">
+    </android.support.design.widget.NavigationView>
 
-    &lt;!&ndash; layout/*.xml &ndash;&gt;
-<FrameLayout
-android:id="@+id/group_9"
-android:layout_width="0dp"
-android:layout_height="0dp"
-android:layout_alignParentLeft="true"
-android:layout_alignParentRight="true"
-android:layout_alignParentTop="true"
-android:layout_alignParentBottom="true"
-android:background="@drawable/group_9"
-    />
+</android.support.v4.widget.DrawerLayout>
 
-
-
-
-    &lt;!&ndash; layout/*.xml &ndash;&gt;
-<FrameLayout
-android:id="@+id/rectangle"
-android:layout_width="0dp"
-android:layout_height="0dp"
-android:layout_alignParentLeft="true"
-android:layout_alignParentRight="true"
-android:layout_alignParentTop="true"
-android:layout_alignParentBottom="true"
-android:background="@drawable/rectangle"
-    />
-
-
-    &lt;!&ndash; drawable/rectangle.xml &ndash;&gt;
-<vector
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:aapt="http://schemas.android.com/aapt"
-android:width="411dp"
-android:height="60dp"
-android:viewportWidth="411"
-android:viewportHeight="60"
-    >
-
-<group>
-
-    <clip-path
-        android:pathData="M0 0H411V60H0V0Z"
-        />
-
-    <path
-        android:pathData="M0 0V60H411V0"
-        android:fillColor="#805FB4"
-        />
-
-</group>
-
-</vector>
-
-
-
-    &lt;!&ndash; layout/*.xml &ndash;&gt;
-<View
-android:id="@+id/rectangle"
-android:layout_width="0dp"
-android:layout_height="0dp"
-android:layout_alignParentLeft="true"
-android:layout_alignParentRight="true"
-android:layout_alignParentTop="true"
-android:layout_alignParentBottom="true"
-android:background="@drawable/rectangle"
-    />
-
-
-    &lt;!&ndash; drawable/rectangle.xml &ndash;&gt;
-<vector
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:aapt="http://schemas.android.com/aapt"
-android:width="411dp"
-android:height="2dp"
-android:viewportWidth="411"
-android:viewportHeight="2"
-    >
-
-<group>
-
-    <clip-path
-        android:pathData="M0 0H411V2H0V0Z"
-        />
-
-    <path
-        android:pathData="M0 0V2H411V0"
-        android:fillColor="#543787"
-        />
-
-</group>
-
-</vector>
-
-
-
-    &lt;!&ndash; layout/*.xml &ndash;&gt;
-<View
-android:id="@+id/rectangle"
-android:layout_width="0dp"
-android:layout_height="0dp"
-android:layout_alignParentLeft="true"
-android:layout_alignParentRight="true"
-android:layout_alignParentTop="true"
-android:layout_alignParentBottom="true"
-android:background="@drawable/rectangle"
-    />
-
-
-    &lt;!&ndash; drawable/rectangle.xml &ndash;&gt;
-<vector
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:aapt="http://schemas.android.com/aapt"
-android:width="411dp"
-android:height="2dp"
-android:viewportWidth="411"
-android:viewportHeight="2"
-    >
-
-<group>
-
-    <clip-path
-        android:pathData="M0 0H411V2H0V0Z"
-        />
-
-    <path
-        android:pathData="M0 0V2H411V0"
-        android:fillColor="#543787"
-        />
-
-</group>
-
-</vector>
-
-
-
-    &lt;!&ndash; layout/*.xml &ndash;&gt;
-<View
-android:id="@+id/rectangle"
-android:layout_width="0dp"
-android:layout_height="0dp"
-android:layout_alignParentLeft="true"
-android:layout_alignParentRight="true"
-android:layout_alignParentTop="true"
-android:layout_alignParentBottom="true"
-android:background="@drawable/rectangle"
-    />
-
-
-    &lt;!&ndash; drawable/rectangle.xml &ndash;&gt;
-<vector
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:aapt="http://schemas.android.com/aapt"
-android:width="411dp"
-android:height="40dp"
-android:viewportWidth="411"
-android:viewportHeight="40"
-    >
-
-<group>
-
-    <clip-path
-        android:pathData="M0 0H411V40H0V0Z"
-        />
-
-    <path
-        android:pathData="M0 0V40H411V0"
-        android:fillColor="#9A7DC3"
-        />
-
-</group>
-
-</vector>
-
-
-
-    &lt;!&ndash; layout/*.xml &ndash;&gt;
-<TextView
-android:id="@+id/university"
-android:layout_width="0dp"
-android:layout_height="0dp"
-android:layout_alignParentLeft="true"
-android:layout_alignParentRight="true"
-android:layout_alignParentTop="true"
-android:layout_alignParentBottom="true"
-android:text="@string/university"
-android:textAppearance="@style/university"
-android:gravity="center_horizontal|center_vertical"
-    />
-
-    &lt;!&ndash;
-      Font family: Roboto
-      Line height: 28sp
-      (identical to box height)
-    &ndash;&gt;
-
-    &lt;!&ndash; styles.xml &ndash;&gt;
-<style name="university">
-
-<item name="android:textSize">
-    24sp
-</item>
-
-<item name="android:textColor">
-    #CDBCE1
-</item>
-
-</style>
-
-
-    &lt;!&ndash; strings.xml &ndash;&gt;
-<string name="university">
-
-University
-</string>
-
-
-
-
-    &lt;!&ndash; layout/*.xml &ndash;&gt;
-<TextView
-android:id="@+id/courses"
-android:layout_width="0dp"
-android:layout_height="0dp"
-android:layout_alignParentLeft="true"
-android:layout_alignParentRight="true"
-android:layout_alignParentTop="true"
-android:layout_alignParentBottom="true"
-android:text="@string/courses"
-android:textAppearance="@style/courses"
-android:gravity="center_horizontal|center_vertical"
-    />
-
-    &lt;!&ndash;
-      Font family: Roboto
-      Line height: 28sp
-    &ndash;&gt;
-
-    &lt;!&ndash; styles.xml &ndash;&gt;
-<style name="courses">
-
-<item name="android:textSize">
-    24sp
-</item>
-
-<item name="android:textColor">
-    #FFFFFF
-</item>
-
-</style>
-
-
-    &lt;!&ndash; strings.xml &ndash;&gt;
-<string name="courses">
-
-Courses
-</string>
-
-
-
-
-    &lt;!&ndash; layout/*.xml &ndash;&gt;
-<View
-android:id="@+id/vector"
-android:layout_width="0dp"
-android:layout_height="0dp"
-android:layout_alignParentLeft="true"
-android:layout_alignParentRight="true"
-android:layout_alignParentTop="true"
-android:layout_alignParentBottom="true"
-android:background="@drawable/vector"
-    />
-
-
-    &lt;!&ndash; drawable/vector.xml &ndash;&gt;
-<vector
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:aapt="http://schemas.android.com/aapt"
-android:width="24dp"
-android:height="24dp"
-android:viewportWidth="24"
-android:viewportHeight="24"
-    >
-
-<group>
-
-    <clip-path
-        android:pathData="M0 0H24V24H0V0Z"
-        />
-
-    <path
-        android:pathData="M0 0V24H24V0"
-        android:fillColor="#FFFFFF"
-        />
-
-</group>
-
-</vector>
-
-
-
-    &lt;!&ndash; layout/*.xml &ndash;&gt;
-<View
-android:id="@+id/vector"
-android:layout_width="0dp"
-android:layout_height="0dp"
-android:layout_alignParentLeft="true"
-android:layout_alignParentRight="true"
-android:layout_alignParentTop="true"
-android:layout_alignParentBottom="true"
-android:background="@drawable/vector"
-    />
-
-
-    &lt;!&ndash; drawable/vector.xml &ndash;&gt;
-<vector
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:aapt="http://schemas.android.com/aapt"
-android:width="24dp"
-android:height="20dp"
-android:viewportWidth="24"
-android:viewportHeight="20"
-    >
-
-<group>
-
-    <clip-path
-        android:pathData="M0 0H24V20H0V0Z"
-        />
-
-    <path
-        android:pathData="M0 0V20H24V0"
-        android:fillColor="#543787"
-        />
-
-</group>
-
-</vector>
-
-
--->

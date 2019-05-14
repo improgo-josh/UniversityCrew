@@ -103,10 +103,10 @@ public class RegisterActivity extends AppCompatActivity {
                 if (!hasEmptyFields()) {
                     if (isConfirmed(email, confirmEmail, password, confirmPassword)) {
                         Log.d(TAG, "Confirmed");
-                        if (isUniversityEmail(email)) {
-                            Log.d(TAG, "isUniversityEmail");
+//                        if (isUniversityEmail(email)) {
+//                            Log.d(TAG, "isUniversityEmail");
                             pullVerificationFragment();
-                        }
+//                        }
                     }
                 }
             }

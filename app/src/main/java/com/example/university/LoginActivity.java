@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +32,7 @@ import com.parse.ParseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
+    ActionBar actionBar;
     static final String TAG = "LoginActivity";
     static final String EMAIL_VERIFIED_KEY = "emailVerified";
     ProgressDialog progressDialog;
@@ -45,6 +47,8 @@ public class LoginActivity extends AppCompatActivity {
     TextInputLayout til_password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        actionBar = getSupportActionBar();
+        actionBar.hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -129,12 +133,12 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (user.getBoolean(EMAIL_VERIFIED_KEY)) {
+                /*if (user.getBoolean(EMAIL_VERIFIED_KEY)) {*/
                     message = "Successfully logged in!";
-                    goToActivity(MainActivity.class);
-                } else {
+                    goToActivity(CoursesActivity.class);
+                /*} else {
                     message = "Email is not verified";
-                }
+                }*/
                 Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
 
